@@ -1,38 +1,190 @@
+/* Ensure full height for the viewport */
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Center the entire App using flexbox */
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  height: 110%;
+  background: linear-gradient(45deg, #0d0d0d, #1a1a1a, #0d0d0d);
+  background-size: 400% 400%;
+  text-align: center;
+  padding-bottom: 50px;
+}
+
+/* Animated gradient background with neon grid overlay */
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(45deg, #0d0d0d, #1a1a1a, #0d0d0d);
+  background-size: 400% 400%;
+  animation: neonBackground 10s ease infinite;
+  color: #e0e0e0;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+@keyframes neonBackground {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Neon grid overlay */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(0deg, transparent 95%, rgba(57, 255, 20, 0.2) 95%),
+    linear-gradient(90deg, transparent 95%, rgba(57, 255, 20, 0.2) 95%);
+  background-size: 50px 50px;
+  pointer-events: none;
+  opacity: 0.5;
+  animation: gridMove 10s linear infinite;
+}
+
+@keyframes gridMove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+/* Container */
+.container {
+  max-width: 600px;
+  background: rgba(34, 34, 34, 0.8);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 0 auto; /* Center the container horizontally */
+}
+
+/* Neon Title */
+.neon-title {
+  color: #39ff14;
+  text-shadow: 0 0 10px #39ff14, 0 0 20px #39ff14;
+}
+
+/* Neon Label */
+.neon-label {
+  color: #39ff14;
+  text-shadow: 0 0 5px #39ff14;
+}
+
+/* Neon Select */
+.neon-select {
+  background: #111;
+  color: #39ff14;
+  border: 2px solid #39ff14;
+  text-shadow: 0 0 5px #39ff14;
+  border-radius: 8px;
+}
+
+/* Neon Buttons */
+.btn-neon {
+  background: transparent;
+  border: 2px solid #39ff14;
+  color: #39ff14;
+  text-shadow: 0 0 5px #39ff14, 0 0 10px #39ff14;
+  border-radius: 10px;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.btn-neon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px #39ff14, 0 0 30px #39ff14;
+}
+
+/* Keyboard Buttons */
+.keyboard-btn {
+  background: transparent;
+  border: 4px solid #39ff14;
+  color: #39ff14;
+  font-weight: bold;
+  font-family: "Poppins", sans-serif;
+  width: 60px;
+  height: 40px;
+  border-radius: 15px;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.keyboard-btn:hover {
+  background: #39ff14;
+  color: #010101;
+  transform: scale(1.1);
+}
+.keyboard-btn.used {
+  background: #555;
+  border-color: #555;
+  color: #aaa;
+  pointer-events: none;
+}
+.keyboard-btn.wrong {
+  background: #ff073a;
+  border-color: #ff073a;
+  color: #fff;
+  pointer-events: none;
+}
+.keyboard-btn.correct {
+  background: #39ff14;
+  border-color: #39ff14;
+  color: #fff;
+  pointer-events: none;
+}
+
+/* Canvas (Hangman) */
+canvas {
+  width: 300px;
+  height: 300px;
+  background: #010101;
+  border: 2px solid #39ff14;
+  border-radius: 8px;
+  margin: 10px auto;
+  display: block;
+  box-shadow: 0 0 10px #39ff14;
+}
+
+/* Scoreboard styles */
+#scoreboard {
+  position: fixed;
+  bottom: 10px;
+  left: 90%;
+  transform: translateX(-50%);
+  background: rgba(34, 34, 34, 0.9);
+  border-radius: 50px;
+  padding: 20px;
+  text-align: center;
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.neon-title-large {
+  font-size: 3rem; /* Adjust the size as needed */
+}
+.btn-large {
+  font-size: 1rem; /* Adjust the size as needed */
+  padding: 10px 10px; /* Adjust padding as needed */
+}
+.keyboard-btn-large {
+  font-size: 1.5rem; /* Adjust the size as needed */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.word-display-large {
+  font-size: 1.5rem; /* Adjust the size as needed */
+  letter-spacing: 0.1rem; /* Adjust spacing as needed */
 }
